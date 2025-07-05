@@ -1,20 +1,21 @@
 # Chef Claude
 
-## A recipe maker app that takes in ingredients written by the user and Claude gives a recipe
+## A recipe maker app that takes in ingredients and makes a recipe
 
 The app was built with the help of Scrimba.
 The user types in ingredients and then the Claude AI develops a recipe from those ingredients.
 
 
-From this project, I learnt about...
+From this project, I've learnt about...
 
 State:
-- useState
-- updating state using a callback function
-- ternary
-- toggling state
-- arrays as a state
-- objects as a state
+- Event listeners
+- Using `useState`
+- Updating state using a callback function
+- Conditional rendering using ternary and `&&`
+- Toggling state
+- Arrays as a state
+- Objects as a state
 
 Forms in React:
 - event.preventDefault()
@@ -27,3 +28,4 @@ State & Props:
 - Passing state as props
 - Setting state from child components
 - Shared state
+- Managing where state should be held
