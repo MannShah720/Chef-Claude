@@ -1,9 +1,9 @@
-# Chef Claude
+# Chef Bot
 
 ## A recipe maker app that takes in ingredients and makes a recipe
 
 The app was built with the help of Scrimba.
-The user types in ingredients and then the Claude AI develops a recipe from those ingredients.
+The user types in ingredients and then the Hugging Face AI develops a recipe from those ingredients.
 
 
 From this project, I've learnt about...
