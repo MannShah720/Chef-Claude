@@ -1,34 +1,67 @@
 import React from "react"
 import IngredientsList from "./components/IngredientsList"
 import ClaudeRecipe from "./components/ClaudeRecipe"
-import { getRecipeFromChefClaude, getRecipeFromMistral } from "./ai"
+import { getRecipeFromMistral } from "./ai"
 
 export default function Main() {
+    // Ingredients State
     const [ingredients, setIngredients] = React.useState(
-        ["chicken", "all the main spices", "corn", "heavy cream", "pasta"]
+        []
     )
+
+    // Recipe State
     const [recipe, setRecipe] = React.useState("")
 
+    // Loading State
+    const [loading, setLoading] = React.useState(false)
+
+    // Get Recipe function
     async function getRecipe() {
-        const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
-        setRecipe(recipeMarkdown)
+        console.log("Get recipe button clicked");
+        setLoading(true)
+        setRecipe("");
+        try {
+            const recipeMarkdown = await getRecipeFromMistral(ingredients);
+            setRecipe(recipeMarkdown);
+        } catch (err) {
+            console.error("Failed to get recipe:", err);
+        } finally {
+            setLoading(false)
+        }
     }
 
+    // Add ingredient
     function addIngredient(formData) {
         const newIngredient = formData.get("ingredient")
-        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
+        if (newIngredient === "") {}
+        else {setIngredients(prevIngredients => [...prevIngredients, newIngredient])}
+    }
+
+    // Remove ingredient
+    function removeIngredient() {
+        setIngredients(prevIngredients => prevIngredients.slice(0, -1))
+        setRecipe("");
     }
 
     return (
         <main>
-            <form action={addIngredient} className="add-ingredient-form">
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.target);
+                    addIngredient(formData);
+                    e.target.reset();
+                }}
+                className="add-ingredient-form"
+                >
                 <input
                     type="text"
                     placeholder="e.g. oregano"
                     aria-label="Add ingredient"
                     name="ingredient"
                 />
-                <button>Add ingredient</button>
+                <button type="submit" className="add-btn">Add</button>
+                <button type="button" className="remove-btn" onClick={removeIngredient}>Remove</button>
             </form>
 
             {ingredients.length > 0 &&
@@ -37,6 +70,11 @@ export default function Main() {
                     getRecipe={getRecipe}
                 />
             }
+
+            {loading && 
+            <div className="loading-text">
+                Loading recipe<span className="dots"></span>
+            </div>}
 
             {recipe && <ClaudeRecipe recipe={recipe} />}
         </main>
