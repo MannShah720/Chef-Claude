@@ -44,3 +44,5 @@ Backend:
 - cors
 - POST request
 - JSON
+
+I've also changed the scripts so that running the line 'npm start' runs both frontend and backend

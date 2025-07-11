@@ -2,9 +2,10 @@
   "name": "Scrim-s06j1gu",
   "description": "https://scrimba.com/learn-react-c0e/~07g",
  "scripts": {
-  "start": "node server.js",
+  "dev": "vite",
   "build": "vite build",
-  "serve": "vite preview"
+  "preview": "vite preview",
+  "start": "node server.js"
 },
   "dependencies": {
     "@anthropic-ai/sdk": "0.27.3",
