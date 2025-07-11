@@ -1,29 +1,24 @@
-import { HfInference } from '@huggingface/inference'
-
-const SYSTEM_PROMPT = `
-You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
-`
-// Hugging Face
-const hf = new HfInference("123")
-
 export async function getRecipeFromMistral(ingredientsArr) {
-    console.log("Fetching recipe with ingredients:", ingredientsArr);
-    
-    const ingredientsString = ingredientsArr.join(", ")
-    try {
-        const response = await hf.chatCompletion({
-            model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-            messages: [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
-            ],
-            max_tokens: 1024,
-        })
+  if (!Array.isArray(ingredientsArr) || ingredientsArr.length === 0) {
+    throw new Error("You must provide at least one ingredient.");
+  }
 
-        console.log("API response:", response);
+  try {
+    const res = await fetch("http://localhost:5000/api/recipe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ingredients: ingredientsArr }),
+    });
 
-        return response.choices[0].message.content
-    } catch (err) {
-        console.error(err.message)
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`Server error: ${errText}`);
     }
+
+    const { recipe } = await res.json();
+    return recipe;
+  } catch (err) {
+    console.error("getRecipeFromMistral error:", err);
+    throw err;
+  }
 }
