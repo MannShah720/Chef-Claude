@@ -2,6 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 const { HfInference } = require("@huggingface/inference");
 
 dotenv.config();
@@ -15,6 +16,8 @@ app.use(express.json());
 
 // Initialize Hugging Face API client
 const hf = new HfInference(process.env.HF_API_KEY);
+
+app.use(express.static(path.join(__dirname, "dist")));
 
 const SYSTEM_PROMPT = `
 You are an assistant that receives a list of ingredients and suggests a recipe...
@@ -57,6 +60,10 @@ app.post("/api/recipe", async (req, res) => {
     console.error("API error:", err);
     res.status(500).json({ error: err.message || "Server error." });
   }
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // Logs message if server starts 
