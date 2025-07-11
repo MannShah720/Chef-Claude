@@ -75,8 +75,9 @@ main {
 }
 
 ul.ingredients-list {
-    margin-bottom: 48px;
+    margin-bottom: 68px;
 }
+
 
 ul.ingredients-list > li {
     color: #475467;
@@ -105,7 +106,7 @@ ul.ingredients-list > li {
 }
 
 .get-recipe-container button {
-    border: none;
+    border: black;
     border-radius: 6px;
     background: #ff4000;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
