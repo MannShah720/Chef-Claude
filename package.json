@@ -16,10 +16,10 @@
     "express": "^4.18.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-markdown": "9.0.1",
-    "vite": "latest"
+    "react-markdown": "9.0.1"
   },
   "devDependencies": {
+    "vite": "latest",
     "@vitejs/plugin-react": "*"
   }
 }
