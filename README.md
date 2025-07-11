@@ -1,4 +1,7 @@
-# Chef Bot
+<h1>
+  <img src="images/chef-claude-icon.png" alt="Logo" width="50" style="vertical-align: middle;">
+  Chef Bot
+</h1>
 
 ## An AI recipe generator app that takes in ingredients and makes a recipe
 
@@ -10,7 +13,7 @@ However, i have added extra features such as:
 - A loading animation
 - A backend to hide the API key safely
 
-From this project, I've learnt about...
+## From this project, I've learnt about...
 
 State:
 - Event listeners
