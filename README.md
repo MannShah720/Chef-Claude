@@ -6,9 +6,9 @@ The user is able to add ingredients by using the text box and also remove them. 
 
 The app was built with the help of Scrimba's React course.
 However, i have added extra features such as:
-* "remove ingredients" button
-* A loading animation
-* A backend to hide the API key safely
+- "Remove ingredients" button
+- A loading animation
+- A backend to hide the API key safely
 
 From this project, I've learnt about...
 
@@ -34,5 +34,13 @@ State & Props:
 - Shared state
 - Managing where state should be held
 
+Using asynchronous programming with API
+
 Backend:
-In order to hide my API key safely, i needed to create a backend by using express, dotenv, axios & cors in a server.js file and then placing my API calls in there
+- .env
+- express
+- dotenv
+- axios
+- cors
+- POST request
+- JSON
