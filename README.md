@@ -13,6 +13,18 @@ However, i have added extra features such as:
 - A loading animation
 - A backend to hide the API key safely
 
+## Demo
+![Chef-Bot-Textbox](images/readMe-img-1.png)
+- When the app first loads, there will be a textbox, where the user can type in any ingredient
+- There is also two buttons, one to add an ingredient and another to remove.
+
+![Chef-Bot-Recipe-Button](images/readMe-img-2.png)
+- Once the user inputs at least 4 ingredients, a recipe container appears, which tells the user that they can generate a recipe now.
+- Once the button is pressed, a loading animation plays as the API develops a response
+
+![Chef-Bot-Recipe-Button](images/readMe-img-3.png)
+When the response is rendered, the loading text disappears and the markdown is formatted to be easily readable
+
 ## From this project, I've learnt about...
 
 State:
@@ -37,8 +49,6 @@ State & Props:
 - Shared state
 - Managing where state should be held
 
-Using asynchronous programming with API
-
 Backend:
 - .env
 - express
@@ -48,4 +58,4 @@ Backend:
 - POST request
 - JSON
 
-I've also changed the scripts so that running the line 'npm start' runs both frontend and backend
+Using asynchronous programming with API
